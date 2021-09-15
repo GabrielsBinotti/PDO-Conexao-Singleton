@@ -1,0 +1,42 @@
+
+PARA FAZER UM SELECT ALL
+
+$pdo = Connection::getConnection();
+$stmt = $pdo->prepare("SELECT * FROM TABELA");
+$stmt->execute();
+$data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+
+PARA FAZER UM SELECT USANDO WHERE
+
+$pdo = Connection::getConnection();
+$stmt = $pdo->repare("SELECT * FROM TABELA WHERE id=:id");
+$stmt->bindValue(':id',$this->getId());
+$stmt->execute();
+$data = $stmt->fetch();
+
+
+PARA FAZER UM INSERT
+
+$pdo = Connection::getConnection();
+$stmt = $pdo->prepare("INSERT INTO TABELA(nome, telefone) VALUES(:nome, :telefone) ");
+$stmt->bindValue(":nome", "Valor");
+$stmt->bindValue(":telefone", "Valor");
+$return = $stmt->execute();
+
+
+PARA FAZER UM UPDATE
+
+$pdo = Connection::getConnection();
+$stmt = $pdo->prepare("UPDATE TABELA SET nome=:nome WHERE id=:id");
+$stmt->bindValue(":id", "Valor");
+$stmt->bindValue(":nome", "Valor");
+$return = $stmt->execute();
+
+
+PARA FAZER UM DELETE
+
+$pdo = Connection::getConnection();
+$stmt = $pdo->prepare("DELETE FROM TABELA WHERE id=:id");
+$stmt->bindValue(":id", "Valor");
+$return = $stmt->execute();
