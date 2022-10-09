@@ -13,11 +13,12 @@ class Connection{
         $pass   = "SUA_SENHA";
         $dbname = "SEU_DATABASE";
 
-        $params = "mysql:host={$host};dbname={$dbname};port={$port}";
+        $dsn = "mysql:host={$host};dbname={$dbname};port={$port}";
 
         try{
-            self::$pdo = new \PDO($params, $user, $pass);
+            self::$pdo = new \PDO($dsn, $user, $pass);
             self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            self::$pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
             self::$pdo->exec('SET NAMES utf8');
 
         }catch(\PDOException $e){
