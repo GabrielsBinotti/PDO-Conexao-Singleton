@@ -78,3 +78,26 @@ $stmt->bindValue(':campo', getValor(), PDO::PARAM_INT);
 ## Prepare X Query
 A dirença está que na <strong>$stmt->query()</strong> as consultas são executadas juntamente com os valores nela passados, sem quaisquer tratamentos interno.<br>
 O <strong>$stmt->prepare()</strong> é chamada de "Prepare Instatement". A declaração preparada é um recurso usado para executar as mesmas (ou similares) instruções SQL repetidamente com alta eficiência. Os valores para a consulta são passados através de parâmetros, que são tratados evitando SQL injection.
+
+
+## SQL Server
+Para utilizar o Sql Server deve-se instalar o driver e configurar algumas linhas no php.ini, conforme exemplo abaixo:<br>
+
+* Baixar o Driver no link abaixo:<br>
+https://learn.microsoft.com/pt-br/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15 <br>
+* Após efetuar o download, descompacte os arquivos e os copie para o diretório ext, no exemplo estou usando o xampp.
+![copiando](https://user-images.githubusercontent.com/21115766/208893219-3d91d877-12ad-4fa4-9ae2-ba97dd3d5e71.png) <br>
+Fonte https://www.devmedia.com.br/conectando-no-sql-server-utilizando-pdo-em-php/38936 <br>
+
+* Depois editar o arquivo php.ini <br>
+```
+// Versão X86
+extension=php_pdo_sqlsrv_73_ts_x86.dll
+extension=php_sqlsrv_73_ts_x86.dll
+
+// Versão x64
+extension=php_pdo_sqlsrv_73_ts_x64.dll
+extension=php_sqlsrv_73_ts_x64.dll
+```
+
+E por fim iniciar o php
